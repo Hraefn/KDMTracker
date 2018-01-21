@@ -1,5 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Alert } from 'react-native';
+import { Button, Icon } from 'react-native-elements';
+import text from './src/styles/text.js';
+
 
 export default class App extends React.Component {
   render() {
@@ -9,15 +12,35 @@ export default class App extends React.Component {
 
     return (
       <View style={styles.container}>
-      <Image source = {logo} style = {{width: 137, height: 267}}/>
-        <Text>{' '}</Text>
-        <Text>{' '}</Text>
-        <Text style = {styles.titleText}>Kingdom Death Monster</Text>
-        <Text style = {styles.subtitleText}>- Campaign Tracker -</Text>
+        <View style={styles.flexContainer1}>
+        </View>
+        <View style={styles.flexContainer2}>
+          <Image source = {logo} style = {{width: 137, height: 267}}/>
+        </View>  
+        <View style={styles.flexContainer1}>
+        <Text style = {text.title}>Kingdom Death Monster</Text>
+        <Text style = {text.subtitle}>- Campaign Tracker -</Text>
+        </View>
+        <View style={styles.flexContainer1}>
+        <Text style = {text.button}>Do you *really* want to push the button?</Text>
+        </View>
+        <View style={styles.flexContainer1}>        
+        <Button
+          large
+          raised
+          iconRight={{name: 'dice-d10', type: 'material-community'}}
+          onPress={() => {
+          Alert.alert('You had a destructive party! \n LOSE ALL RESOURCES!');
+          }}
+          title="Roll a d10"
+          color= '#a3a3c2'
+          backgroundColor= '#313335'
+        />
       </View>
-    );
-  }
-}
+      </View>
+          );
+      }
+    }
 
 const styles = StyleSheet.create({
   container: {
@@ -26,14 +49,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  titleText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#c61d29'
+  flexContainer1: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  subtitleText: {
-    fontSize: 18,
-    color: 'white'
-  }
-
-});
+  flexContainer2: {
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  flexContainer3: {
+    flex: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+}  
+);
