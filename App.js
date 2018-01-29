@@ -1,68 +1,174 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Alert } from 'react-native';
+import { Text, View, Image, Alert } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 import text from './src/styles/text.js';
+import { DrawerNavigator } from 'react-navigation'; 
+import flex from './src/styles/flex.js';
 
-
-export default class App extends React.Component {
-  render() {
     let logo = {
       uri: 'https://i.imgur.com/l4mVfe0.png'
     };
 
-    return (
-      <View style={styles.container}>
-        <View style={styles.flexContainer1}>
+  const kdmHome = ({ navigation }) => (
+      <View style={flex.container}>
+      <View style={flex.container1}>
         </View>
-        <View style={styles.flexContainer2}>
+        <View style={flex.container2}>
           <Image source = {logo} style = {{width: 137, height: 267}}/>
         </View>  
-        <View style={styles.flexContainer1}>
+        <View style={flex.container1}>
         <Text style = {text.title}>Kingdom Death Monster</Text>
         <Text style = {text.subtitle}>- Campaign Tracker -</Text>
+        
         </View>
-        <View style={styles.flexContainer1}>
-        <Text style = {text.button}>Do you *really* want to push the button?</Text>
-        </View>
-        <View style={styles.flexContainer1}>        
         <Button
           large
           raised
-          iconRight={{name: 'dice-d10', type: 'material-community'}}
+          iconRight={{name: 'torsos-all', type: 'foundation'}}
           onPress={() => {
-          Alert.alert('You had a destructive party! \n LOSE ALL RESOURCES!');
+          Alert.alert('You had a destructive party! \n LOSE ALL RESOURCES!');  
           }}
-          title="Roll a d10"
+          title="Select Your Campaign"
+          color= '#a3a3c2'
+          backgroundColor= '#313335'
+          />
+        <View style={flex.container1}>        
+        <Button
+          large
+          raised
+          iconRight={{name: 'torsos-all', type: 'foundation'}}
+          onPress={() => {
+          }}
+          title="Create New Campaign"
           color= '#a3a3c2'
           backgroundColor= '#313335'
         />
-      </View>
-      </View>
-          );
-      }
-    }
+      
+    </View>
+    </View>
+  );
+  
+  const kdmSummary = ({ navigation }) => (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Text>Summary Screen</Text>
+    <Button
+    onPress={() => navigation.navigate('Home')}
+    title="Return home... wherever that is."
+    color= '#a3a3c2'
+    backgroundColor= '#313335'
+    />
+    </View>
+    );
+    
+    const kdmPopulation = ({ navigation }) => (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Text>Population Screen</Text>
+    <Button
+    onPress={() => navigation.navigate('Home')}
+    title="Return home... wherever that is."
+    color= '#a3a3c2'
+    backgroundColor= '#313335'
+    />
+    </View>
+    );
+    
+    const kdmInnovations = ({ navigation }) => (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Text>Innovations Screen</Text>
+    <Button
+    onPress={() => navigation.navigate('Home')}
+    title="Return home... wherever that is."
+    color= '#a3a3c2'
+    backgroundColor= '#313335'
+    />
+    </View>
+    );
+    
+    const kdmLocations = ({ navigation }) => (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Text>Location Screen</Text>
+    <Button
+    onPress={() => navigation.navigate('Home')}
+    title="Return home... wherever that is."
+    color= '#a3a3c2'
+    backgroundColor= '#313335'
+    />
+    </View>
+    );
+    
+    const kdmResources = ({ navigation }) => (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Text>Resources Screen</Text>
+    <Button
+    onPress={() => navigation.navigate('Home')}
+    title="Return home... wherever that is."
+    color= '#a3a3c2'
+    backgroundColor= '#313335'
+    />
+    </View>
+    );
+    
+    const kdmGear = ({ navigation }) => (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Text>Gear Screen</Text>
+    <Button
+    onPress={() => navigation.navigate('Home')}
+    title="Return home... wherever that is."
+    color= '#a3a3c2'
+    backgroundColor= '#313335'
+    />
+    </View>
+    );
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#212223',
-    alignItems: 'center',
-    justifyContent: 'center',
+const RootDrawer = DrawerNavigator({
+  Home: { 
+    screen: kdmHome,
+    navigationOptions: {
+      drawerLabel: 'Home',
+    },
   },
-  flexContainer1: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+  Summary: { 
+    screen: kdmSummary,
+    navigationOptions: {
+      drawerLabel: 'Summary',
+    },
   },
-  flexContainer2: {
-    flex: 2,
-    alignItems: 'center',
-    justifyContent: 'center',
+
+  Population: { 
+    screen: kdmPopulation,
+    navigationOptions: {
+      drawerLabel: 'Population',
+    },
   },
-  flexContainer3: {
-    flex: 3,
-    alignItems: 'center',
-    justifyContent: 'center',
+
+Innovations: { 
+    screen: kdmInnovations,
+    navigationOptions: {
+      drawerLabel: 'Innovations',
+    },
   },
-}  
-);
+
+Locations: { 
+    screen: kdmLocations,
+    navigationOptions: {
+      drawerLabel: 'Locations',
+    },
+  },
+
+Resources: { 
+    screen: kdmResources,
+    navigationOptions: {
+      drawerLabel: 'Resources',
+    },
+  },
+
+Gear: { 
+    screen: kdmGear,
+    navigationOptions: {
+      drawerLabel: 'Gear',
+    },
+  },
+
+});
+
+export default RootDrawer;
